@@ -3,13 +3,21 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
+	// input reader
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
+		currentPath, err := os.Getwd()
+		if err != nil {
+			log.Println(err)
+		}
+
+		fmt.Print(currentPath)
 		fmt.Print(" > ")
 
 		input, err := reader.ReadString('\n')
