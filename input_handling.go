@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"os"
 	"os/exec"
 	"strings"
@@ -13,11 +12,8 @@ func executeInput(input string) error {
 
 	switch arguments[0] {
 	case "cd":
-		if len(arguments) < 2 {
-			return errors.New("invalid path")
-		}
+		return cd(arguments)
 
-		return cd(arguments[1])
 	case "exit":
 		os.Exit(0)
 	}

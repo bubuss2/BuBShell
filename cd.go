@@ -1,12 +1,17 @@
 package main
 
 import (
+	"errors"
 	"log"
 	"os"
 )
 
-func cd(argument string) error {
-	if argument == "$HOME" {
+func cd(arguments []string) error {
+	if len(arguments) < 2 {
+		return errors.New("invalid path")
+	}
+
+	if arguments[1] == "$HOME" {
 		homePath, err := os.UserHomeDir()
 		if err != nil {
 			log.Fatal(err)
@@ -14,5 +19,5 @@ func cd(argument string) error {
 		return os.Chdir(homePath)
 	}
 
-	return os.Chdir(argument)
+	return os.Chdir(arguments[1])
 }
