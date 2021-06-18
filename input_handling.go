@@ -7,10 +7,16 @@ import (
 )
 
 func executeInput(input string) error {
-	input = strings.TrimSuffix(input, "\n")
+	input = strings.TrimSpace(input)
 	arguments := strings.Split(input, " ")
 
 	switch arguments[0] {
+	case "top":
+		cmd := exec.Command("top", "-b", "-n", "1")
+		cmd.Stderr = os.Stderr
+		cmd.Stdout = os.Stdout
+		return cmd.Run()
+
 	case "cd":
 		return cd(arguments)
 
