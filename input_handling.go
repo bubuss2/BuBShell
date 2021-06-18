@@ -12,10 +12,7 @@ func executeInput(input string) error {
 
 	switch arguments[0] {
 	case "top":
-		cmd := exec.Command("top", "-b", "-n", "1")
-		cmd.Stderr = os.Stderr
-		cmd.Stdout = os.Stdout
-		return cmd.Run()
+		return top(arguments)
 
 	case "cd":
 		return cd(arguments)
