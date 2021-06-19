@@ -1,5 +1,5 @@
 # BuBShell
-BuBShell is simple shell for unix based systems.  
+BuBShell is simple shell for unix(POSIX) based systems.  
 I made this project to learn internals of linux shells, and expand my skills in Go language.
 
 ## Usage
@@ -26,7 +26,7 @@ exit
 
 ## Requirements
 
-Golang - 1.13.8+  
+Go - 1.13.8+  
 Linux
   
 ### Note
