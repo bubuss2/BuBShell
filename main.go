@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -30,8 +31,14 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 		}
 
-		if err = executeInput(input); err != nil {
-			fmt.Fprintln(os.Stderr, err)
+		pipeline := strings.Contains(input, "|")
+
+		if pipeline {
+			pipeline_handling(input)
+		} else {
+			if err = executeInput(input); err != nil {
+				fmt.Fprintln(os.Stderr, "Command not found!")
+			}
 		}
 	}
 }
