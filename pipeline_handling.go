@@ -10,7 +10,6 @@ import (
 )
 
 func pipeline_handling(input string) {
-	input = strings.TrimSpace(input)
 	commands := strings.Split(input, "|")
 
 	for index := range commands {
