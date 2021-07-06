@@ -4,6 +4,8 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+
+	"./commands"
 )
 
 func executeInput(input string) error {
@@ -12,10 +14,10 @@ func executeInput(input string) error {
 
 	switch arguments[0] {
 	case "top":
-		return top(arguments)
+		return commands.Top(arguments)
 
 	case "cd":
-		return cd(arguments)
+		return commands.Cd(arguments)
 
 	case "exit":
 		os.Exit(0)
