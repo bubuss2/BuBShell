@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"./commands"
+	"github.com/Bubus2/BuBShell/commands"
 )
 
 func executeInput(input string) {
