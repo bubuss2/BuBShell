@@ -31,6 +31,10 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 		}
 
+		if input == "" {
+			continue
+		}
+
 		pipeline := strings.Contains(input, "|")
 
 		if pipeline {
