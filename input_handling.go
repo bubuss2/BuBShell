@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"strings"
@@ -8,17 +9,17 @@ import (
 	"./commands"
 )
 
-func executeInput(input string) error {
+func executeInput(input string) {
 	input = strings.TrimSpace(input)
 	arguments := strings.Split(input, " ")
 
 	switch arguments[0] {
 	case "top":
-		return commands.Top(arguments)
-
+		commands.Top(arguments)
+		return
 	case "cd":
-		return commands.ChangeDirectory(arguments)
-
+		commands.ChangeDirectory(arguments)
+		return
 	case "exit":
 		os.Exit(0)
 	}
@@ -28,5 +29,7 @@ func executeInput(input string) error {
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
 
-	return cmd.Run()
+	if err := cmd.Run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+	}
 }

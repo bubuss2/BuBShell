@@ -36,9 +36,7 @@ func main() {
 		if pipeline {
 			pipelineHandling(input)
 		} else {
-			if err = executeInput(input); err != nil {
-				fmt.Fprintln(os.Stderr, "Command not found!")
-			}
+			executeInput(input)
 		}
 	}
 }

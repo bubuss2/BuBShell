@@ -1,14 +1,15 @@
 package commands
 
 import (
-	"errors"
+	"fmt"
 	"log"
 	"os"
 )
 
-func ChangeDirectory(arguments []string) error {
+func ChangeDirectory(arguments []string) {
 	if len(arguments) < 2 {
-		return errors.New("invalid path")
+		fmt.Fprintln(os.Stderr, "Invalid path!")
+		return
 	}
 
 	if arguments[1] == "$HOME" {
@@ -16,8 +17,12 @@ func ChangeDirectory(arguments []string) error {
 		if err != nil {
 			log.Fatal(err)
 		}
-		return os.Chdir(homePath)
+		if err := os.Chdir(homePath); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
+	} else {
+		if err := os.Chdir(arguments[1]); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
 	}
-
-	return os.Chdir(arguments[1])
 }
