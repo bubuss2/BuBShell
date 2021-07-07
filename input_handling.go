@@ -30,6 +30,10 @@ func executeInput(input string) {
 	cmd.Stdout = os.Stdout
 
 	if err := cmd.Run(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		if err.Error() == cmd.Run().Error() {
+			fmt.Fprintln(os.Stderr, cmd.String()+": command not found")
+		} else {
+			fmt.Fprintln(os.Stderr, err)
+		}
 	}
 }

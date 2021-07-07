@@ -35,14 +35,14 @@ func pipelineHandling(input string) {
 
 		if err := cmd1.Start(); err != nil {
 			if err = cmd1.Wait(); err != nil {
-				fmt.Fprintln(os.Stderr, arguments[index][0]+"  Command not found!")
+				fmt.Fprintln(os.Stderr, arguments[index][0]+": command not found")
 				return
 			}
 		}
 
 		if err := cmd2.Start(); err != nil {
 			if err = cmd2.Wait(); err != nil {
-				fmt.Fprintln(os.Stderr, arguments[index+1][0]+" Command not found!")
+				fmt.Fprintln(os.Stderr, arguments[index+1][0]+": command not found")
 				return
 			}
 		}
