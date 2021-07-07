@@ -17,7 +17,7 @@ func executeInput(input string) error {
 		return commands.Top(arguments)
 
 	case "cd":
-		return commands.Cd(arguments)
+		return commands.ChangeDirectory(arguments)
 
 	case "exit":
 		os.Exit(0)

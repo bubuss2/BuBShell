@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func pipeline_handling(input string) {
+func pipelineHandling(input string) {
 	commands := strings.Split(input, "|")
 
 	for index := range commands {

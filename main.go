@@ -34,7 +34,7 @@ func main() {
 		pipeline := strings.Contains(input, "|")
 
 		if pipeline {
-			pipeline_handling(input)
+			pipelineHandling(input)
 		} else {
 			if err = executeInput(input); err != nil {
 				fmt.Fprintln(os.Stderr, "Command not found!")

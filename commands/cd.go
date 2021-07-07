@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Cd(arguments []string) error {
+func ChangeDirectory(arguments []string) error {
 	if len(arguments) < 2 {
 		return errors.New("invalid path")
 	}
