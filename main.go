@@ -35,23 +35,23 @@ func main() {
 			continue
 		}
 
-		multiple_commands := strings.Contains(input, "&&")
+		multipleCommands := strings.Contains(input, "&&")
 
-		if multiple_commands {
-			multiple_input := strings.Split(input, "&&")
-			for index := range multiple_input {
-				multiple_input[index] = strings.TrimSpace(multiple_input[index])
-				pipeline := strings.Contains(multiple_input[index], "|")
+		if multipleCommands {
+			commands := strings.Split(input, "&&")
+			for index := range commands {
+				commands[index] = strings.TrimSpace(commands[index])
+				pipeline := strings.Contains(commands[index], "|")
 				if pipeline {
-					pipelineHandling(multiple_input[index])
+					executePipelineInput(commands[index])
 				} else {
-					executeInput(multiple_input[index])
+					executeInput(commands[index])
 				}
 			}
 		} else {
 			pipeline := strings.Contains(input, "|")
 			if pipeline {
-				pipelineHandling(input)
+				executePipelineInput(input)
 			} else {
 				executeInput(input)
 			}
